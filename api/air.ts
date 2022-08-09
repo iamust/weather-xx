@@ -1,13 +1,13 @@
-import { VercelRequest, VercelResponse } from '@vercel/node'
-import { keyAuth, airNow } from '@tossdev/weather'
+import type { VercelRequest, VercelResponse } from '@vercel/node'
+import { air, keyAuth } from '@tossdev/weather'
 import statuses from 'statuses'
 
 async function handler(request: VercelRequest, response: VercelResponse) {
   const { location } = request.query
-  const airData: any = await airNow({ location })
+  const data = await air.now(location as string)
 
-  return airData.pm25
-    ? response.json(airData)
+  return data['pm25']
+    ? response.json(data)
     : response.status(404).json({ message: statuses(404) })
 }
 

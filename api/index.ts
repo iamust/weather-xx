@@ -1,12 +1,12 @@
 import { VercelRequest, VercelResponse } from '@vercel/node'
-import weather, { keyAuth } from '@tossdev/weather'
+import { weather, keyAuth } from '@tossdev/weather'
 
 async function handler(request: VercelRequest, response: VercelResponse) {
   const { location } = request.query
 
   try {
-    const forecastData = await weather.forecast({ location })
-    return response.json(forecastData)
+    const data = await weather.forecast(location as string)
+    return response.json(data)
   } catch ({ message }) {
     return response.status(403).json({ message })
   }

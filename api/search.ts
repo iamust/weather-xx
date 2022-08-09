@@ -1,11 +1,11 @@
-import { VercelRequest, VercelResponse } from '@vercel/node'
-import { keyAuth, city } from '@tossdev/weather'
+import type { VercelRequest, VercelResponse } from '@vercel/node'
+import { city, keyAuth } from '@tossdev/weather'
 
 async function handler(request: VercelRequest, response: VercelResponse) {
   const { location } = request.query
-  const divisions = await city.lookup({ location })
+  const data = await city.lookup(location as string)
 
-  return response.json(divisions)
+  return response.json(data)
 }
 
 export default keyAuth(handler)
