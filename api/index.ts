@@ -1,4 +1,4 @@
-import { VercelRequest, VercelResponse } from '@vercel/node'
+import type { VercelRequest, VercelResponse } from '@vercel/node'
 import { weather, keyAuth } from '@tossdev/weather'
 
 async function handler(request: VercelRequest, response: VercelResponse) {
