@@ -3,7 +3,7 @@
   "version": "1.0.1",
   "license": "MIT",
   "dependencies": {
-    "@tossdev/weather": "^1.0.5",
+    "@tossdev/weather": "^1.0.6",
     "statuses": "^2.0.1"
   },
   "devDependencies": {
